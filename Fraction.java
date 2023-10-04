@@ -6,17 +6,21 @@ public class Fraction {
         this.p = p;
         this.q = q;
     }
+
     public Fraction(int p) {
         this.q = 1;
         this.p = p;
     }
+
     public Fraction() {
         this.p = 0;
         this.q = 1;
     }
+
     public int getNumerator() {
         return p;
     }
+
     public int getDenominator() {
         return q;
     }
@@ -26,18 +30,24 @@ public class Fraction {
         return "Je suis une fraction.";
     }
 
-    public static final Fraction Zero=new fraction();
-    public static final Fraction un=new fraction(1);
+    public static final Fraction Zero = new fraction();
+    public static final Fraction un = new fraction(1);
 
-     public boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (this == obj) {
-        return true;
-    }
+            return true;
+        }
         if (obj == null || getClass() != obj.getClass()) {
-        return false;
-    }
-    Fraction other = (Fraction) obj;
+            return false;
+        }
+        Fraction other = (Fraction) obj;
         assert this.q != 0 && other.q != 0 : "Le dénominateur ne peut pas être zéro.";
         return this.p == other.p && this.q == other.q;
-}
+    }
+
+    public Fraction add(Fraction fract1) {
+        int New_q = this.q * fract1.q;
+        int New_p = (this.p * fract1.p) + (fract1.p * this.p);
+        return new Fraction(New_p, New_q);
+    }
 }
